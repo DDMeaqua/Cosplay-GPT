@@ -1,54 +1,47 @@
+"use client";
+
+import { useState } from "react";
 import NextLink from "next/link";
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
+import { Code } from "@nextui-org/code";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Home() {
-	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Make&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
-				<br />
-				<h1 className={title()}>
-					websites regardless of your design experience.
-				</h1>
-				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
-				</h2>
-			</div>
 
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					as={NextLink}
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					as={NextLink}
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
-			</div>
+	const [selected, setSelected] = useState("photos");
 
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
-		</section>
-	);
+  return (
+    <div className="bg-fixed bg-gradient-to-b from-green-100 to-white h-screen fixed inset-0 p-4">
+      <div className="max-w-md mx-auto flex justify-between">
+        <Tabs
+          aria-label="Options"
+          radius="full"
+          size="lg"
+          className="display: inline-block"
+					selectedKey={selected}
+        	onSelectionChange={setSelected}
+        >
+          <Tab key="photos" title="GPTtalk" className="px-16"></Tab>
+          <Tab key="music" title="Cosplay" className="px-16"></Tab>
+        </Tabs>
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill="#000"
+              d="M3 11h14V9H3v2zm0 5h14v-2H3v2zM3 4v2h14V4H3z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
 }
