@@ -25,8 +25,8 @@ export default function Home() {
 					selectedKey={selected}
         	onSelectionChange={setSelected}
         >
-          <Tab key="photos" title="GPTtalk" className="px-16"></Tab>
-          <Tab key="music" title="Cosplay" className="px-16"></Tab>
+          <Tab key="photos" title="GPTtalk" className="px-16 py-6"></Tab>
+          <Tab key="music" title="Cosplay" className="px-16 py-6"></Tab>
         </Tabs>
         <button>
           <svg
