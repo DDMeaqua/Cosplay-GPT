@@ -8,7 +8,7 @@ import SwiperCore from "swiper/core";
 import { Pagination } from "swiper";
 import Slide from "../components/Slide";
 
-export default function App() {
+export default function SwiperPage() {
   const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -20,29 +20,44 @@ export default function App() {
 
   const slideData = [
     {
+      id: 0,
       backgroundImg: "/bg1.png",
-      data: "Data 1",
-      description: "Description 1",
+      name: "メイ",
+      description: ["お花のガーデニングが趣味", "優しい女の子", "料理愛好家"],
+      color: "green",
     },
     {
+      id: 1,
       backgroundImg: "/bg2.png",
-      data: "Data 2",
-      description: "Description 2",
+      name: "猫フクロウロボット",
+      description: ["未来世界探検家", "22世紀のロボット", "愛らしい"],
+      color: "orange",
     },
     {
+      id: 2,
       backgroundImg: "/bg3.png",
-      data: "Data 3",
-      description: "Description 3",
+      name: "カノン",
+      description: [
+        "性の健康と平等の擁護者",
+        "セックスの専門家",
+        "コンサルタント",
+        "元AV女優",
+      ],
+      color: "violet",
     },
     {
+      id: 3,
       backgroundImg: "/bg4.png",
-      data: "Data 4",
-      description: "Description 4",
+      name: "タゴール禅師",
+      description: ["仏教禅宗後継者", "哲学者", "ライター"],
+      color: "amber",
     },
     {
+      id: 4,
       backgroundImg: "/bg5.png",
-      data: "Data 5",
-      description: "Description 5",
+      name: "マズロー",
+      description: ["経験豊富な臨床医", "心理学者", "会話型"],
+      color: "blue",
     },
   ];
 
@@ -50,58 +65,48 @@ export default function App() {
     <>
       <Swiper
         onSwiper={setSwiper}
-        pagination={true}
+        pagination={false}
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.activeIndex);
         }}
       >
         {slideData.map((slide, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide>
             <Slide
+              key={index}
               backgroundImg={slide.backgroundImg}
-              data={slide.data}
+              name={slide.name}
               description={slide.description}
+              color={slide.color}
             />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <div className="flex justify-center mt-0">
-        <Swiper
-          onSwiper={setSwiper}
-          onSlideChange={(swiper) => {
-            setActiveIndex(swiper.activeIndex);
-          }}
-          slidesPerView={5} // 控制可见的 slide 数量
-          spaceBetween={10} // 控制 slide 之间的间距
-          centeredSlides={true} // 控制 slide 是否居中
-        >
-          {[0, 1, 2, 3, 4].map((index) => (
-            <SwiperSlide key={index}>
-            <Badge
-              key={index}
-              content=""
-              color={activeIndex === index ? "success" : "transparent"}
-              shape="circle"
-              size="lg"
-              placement="top-right"
+      <div className="flex justify-center">
+        {[0, 1, 2, 3, 4].map((index) => (
+          <Badge
+            key={index}
+            content=""
+            color={activeIndex === index ? "success" : "transparent"}
+            shape="circle"
+            size="lg"
+            placement="top-right"
+          >
+            <div
+              className={`relative rounded-full w-24 h-24 p-1 ${
+                activeIndex === index ? "border-3 border-green-300" : " "
+              }`}
+              onClick={() => handleControlClick(index)}
             >
-              <div
-                className={`relative rounded-full w-24 h-24 p-1 ${
-                  activeIndex === index ? "border-3 border-green-300" : " "
-                }`}
-                onClick={() => handleControlClick(index)}
-              >
-                <img
-                  src={`/${index + 1}.webp`}
-                  alt=""
-                  className="w-full h-full rounded-full cursor-pointer"
-                />
-              </div>
-            </Badge>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              <img
+                src={`/${index + 1}.webp`}
+                alt=""
+                className="w-full h-full rounded-full cursor-pointer"
+              />
+            </div>
+          </Badge>
+        ))}
       </div>
     </>
   );
