@@ -71,7 +71,7 @@ export default function SwiperPage() {
         }}
       >
         {slideData.map((slide, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <Slide
               key={index}
               backgroundImg={slide.backgroundImg}
