@@ -9,9 +9,9 @@ export default function Home() {
   const [selected, setSelected] = useState("gpt");
 
   return (
-    <div className="bg-gradient-to-b from-green-100 to-white h-screen fixed inset-0 py-4">
+    <div className="bg-gradient-to-b from-green-100 to-white h-screen fixed inset-0 p-4">
       <div className="max-w-lg mx-auto h-full">
-        <div className="flex justify-between items-center mb-12 mt-4 px-2">
+        <div className="flex justify-between items-center mb-8 mt-4 px-2">
           <Tabs
             aria-label="Options"
             radius="full"
@@ -32,7 +32,6 @@ export default function Home() {
             ></Tab>
           </Tabs>
           <Dropdown />
-          <button></button>
         </div>
         {/* 对话 */}
         <div className="bg-white p-4 rounded-2xl h-full relative">
