@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Tabs, Tab, Textarea } from "@nextui-org/react";
 import Dropdown from "../components/Dropdown";
 import SwiperPage from "../components/SwiperPage";
+import Chat from "../components/Chat";
 
 export default function Home() {
   const [selected, setSelected] = useState("gpt");
@@ -36,23 +37,10 @@ export default function Home() {
         {/* 对话 */}
         <div className="bg-white p-4 rounded-2xl h-full relative">
           {selected === "gpt" && (
-            <div>
+						<div>
               {/* "gpt" 显示的内容 */}
-              <p>这是 GPTtalk 内容</p>
-              <div className="absolute bottom-0 left-0 right-0 p-8 flex justify-between items-center mb-24">
-                <Textarea
-                  labelPlacement="outside"
-                  placeholder="请输入..."
-                  minRows="1"
-                  radius="full"
-                />
-                <img
-                  src="https://cosplay-ai.gpt2338.jp/images/svg/send.svg"
-                  alt=""
-                  className="h-8 pl-2"
-                />
-              </div>
-            </div>
+							<Chat />
+						</div>
           )}
           {selected === "cos" && (
             <div>
