@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Tabs, Tab, Textarea } from "@nextui-org/react";
 import Dropdown from "../components/Dropdown";
 import SwiperPage from "../components/SwiperPage";
-import Chat from "../components/Chat";
+import Gpt from "../components/Gpt";
 
 export default function Home() {
   const [selected, setSelected] = useState("gpt");
@@ -39,7 +39,7 @@ export default function Home() {
           {selected === "gpt" && (
 						<div className="h-full">
               {/* "gpt" 显示的内容 */}
-							<Chat />
+							<Gpt />
 						</div>
           )}
           {selected === "cos" && (

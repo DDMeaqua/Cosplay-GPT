@@ -1,71 +1,34 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Textarea } from "@nextui-org/react";
+import React from "react";
+import Gpt from "../components/Gpt"
 
-export default function Chat() {
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
-  const messagesEndRef = useRef(null);
-
-  useEffect(() => {
-    // 每当消息列表更新时，将滚动条滚动到底部
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
-
-  const handleInputChange = (e) => {
-    setNewMessage(e.target.value);
-  };
-
-  const handleSendMessage = () => {
-    if (newMessage.trim() !== "") {
-      setMessages([...messages, { text: newMessage }]);
-      setNewMessage("");
-    }
-  };
-
+export default function Chat({ onClose, name, avatar }) {
   return (
-    <div className="h-full">
-      <div className="flex flex-col h-screen">
-        <div className="flex-1 p-4 overflow-y-auto">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`mb-4 ${index % 2 === 0 ? "text-right" : "text-left"}`}
-            >
-              <div
-                className={`inline-block px-4 py-2 rounded-lg ${
-                  index % 2 === 0
-                    ? "bg-gray-300 text-gray-700"
-                    : "bg-blue-500 text-white"
-                }`}
-              >
-                {message.text}
-              </div>
-            </div>
-          ))}
-          {/* 这个空 div 用于滚动到底部 */}
-          <div ref={messagesEndRef}></div>
+    <div className="fixed top-0 left-0 w-full h-screen flex flex-col bg-white">
+      <div className="bg-white p-2 flex items-center">
+        <button onClick={onClose} className="p-2 ml-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+        </button>
+        <div className="ml-4">
+          <img src={avatar} alt={name} className="w-12 h-12 rounded-full" />
         </div>
-        <div className="p-4 mb-36">
-          <div className="flex items-center">
-            <Textarea
-              labelPlacement="outside"
-              placeholder="请输入..."
-              minRows="1"
-              radius="full"
-              value={newMessage}
-              onChange={handleInputChange}
-            />
-            <img
-              src="https://cosplay-ai.gpt2338.jp/images/svg/send.svg"
-              alt=""
-              className="h-8 pl-2 cursor-pointer"
-              onClick={handleSendMessage}
-            />
-          </div>
+        <div className="ml-4">
+          <h2 className="text-xl font-semibold">{name}</h2>
         </div>
       </div>
+      <Gpt />
     </div>
   );
 }

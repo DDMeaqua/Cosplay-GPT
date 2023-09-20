@@ -69,7 +69,7 @@ export default function SwiperPage() {
           onSwiper={setSwiper}
           pagination={false}
           thumbs={{ swiper: swiper }}
-          modules={[FreeMode, Navigation, Thumbs]}
+          modules={[FreeMode, Thumbs]}
           onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
         >
           {slideData.map((slide, index) => (
@@ -87,11 +87,11 @@ export default function SwiperPage() {
       <div className="overflow-hidden">
         <Swiper
           onSwiper={setSwiper}
-          spaceBetween={40}
+          spaceBetween={24}
           slidesPerView={4}
           freeMode={true}
           watchSlidesProgress={true}
-          modules={[FreeMode, Navigation, Thumbs]}
+          modules={[FreeMode, Thumbs]}
         >
           {[0, 1, 2, 3, 4].map((index) => (
             <SwiperSlide key={index}>
