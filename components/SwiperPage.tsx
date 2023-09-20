@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import SwiperCore from "swiper/core";
 import { Pagination } from "swiper";
 import Slide from "../components/Slide";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
 export default function SwiperPage() {
   const [swiper, setSwiper] = useState(null);
@@ -66,14 +67,13 @@ export default function SwiperPage() {
       <Swiper
         onSwiper={setSwiper}
         pagination={false}
-        onSlideChange={(swiper) => {
-          setActiveIndex(swiper.activeIndex);
-        }}
+        thumbs={{ swiper: swiper }}
+        modules={[FreeMode, Navigation, Thumbs]}
+        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       >
         {slideData.map((slide, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <Slide
-              key={index}
               backgroundImg={slide.backgroundImg}
               name={slide.name}
               description={slide.description}
@@ -83,31 +83,41 @@ export default function SwiperPage() {
         ))}
       </Swiper>
 
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center"> */}
+      <Swiper
+        onSwiper={setSwiper}
+        spaceBetween={40}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+      >
         {[0, 1, 2, 3, 4].map((index) => (
-          <Badge
-            key={index}
-            content=""
-            color={activeIndex === index ? "success" : "transparent"}
-            shape="circle"
-            size="lg"
-            placement="top-right"
-          >
-            <div
-              className={`relative rounded-full w-24 h-24 p-1 ${
-                activeIndex === index ? "border-3 border-green-300" : " "
-              }`}
-              onClick={() => handleControlClick(index)}
+          <SwiperSlide key={index}>
+            <Badge
+              content=""
+              color={activeIndex === index ? "success" : "transparent"}
+              shape="circle"
+              size="lg"
+              placement="top-right"
             >
-              <img
-                src={`/${index + 1}.webp`}
-                alt=""
-                className="w-full h-full rounded-full cursor-pointer"
-              />
-            </div>
-          </Badge>
+              <div
+                className={`relative rounded-full w-24 h-24 p-1 ${
+                  activeIndex === index ? "border-3 border-green-300" : " "
+                }`}
+                onClick={() => handleControlClick(index)}
+              >
+                <img
+                  src={`/${index + 1}.webp`}
+                  alt=""
+                  className="w-full h-full rounded-full cursor-pointer"
+                />
+              </div>
+            </Badge>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
+      {/* </div> */}
     </>
   );
 }
