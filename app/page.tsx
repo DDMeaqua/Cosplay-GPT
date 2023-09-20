@@ -10,8 +10,8 @@ export default function Home() {
   const [selected, setSelected] = useState("gpt");
 
   return (
-    <div className="bg-gradient-to-b from-green-100 to-white h-screen fixed inset-0 p-4">
-      <div className="max-w-lg mx-auto h-full">
+    <div className="bg-gradient-to-b from-green-100 to-white fixed inset-0 p-4">
+      <div className="max-w-lg mx-auto h-full flex flex-col">
         <div className="flex justify-between items-center mb-8 mt-4 px-2">
           <Tabs
             aria-label="Options"
@@ -35,15 +35,15 @@ export default function Home() {
           <Dropdown />
         </div>
         {/* 对话 */}
-        <div className="bg-white p-4 rounded-2xl h-full relative">
+        <div className="bg-white p-3 rounded-2xl h-full">
           {selected === "gpt" && (
-						<div>
+						<div className="h-full">
               {/* "gpt" 显示的内容 */}
 							<Chat />
 						</div>
           )}
           {selected === "cos" && (
-            <div>
+            <div className="h-full">
               {/* "cos" 显示的内容 */}
               <SwiperPage />
             </div>

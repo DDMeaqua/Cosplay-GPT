@@ -63,61 +63,62 @@ export default function SwiperPage() {
   ];
 
   return (
-    <>
-      <Swiper
-        onSwiper={setSwiper}
-        pagination={false}
-        thumbs={{ swiper: swiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-      >
-        {slideData.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <Slide
-              backgroundImg={slide.backgroundImg}
-              name={slide.name}
-              description={slide.description}
-              color={slide.color}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* <div className="flex justify-center"> */}
-      <Swiper
-        onSwiper={setSwiper}
-        spaceBetween={40}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-      >
-        {[0, 1, 2, 3, 4].map((index) => (
-          <SwiperSlide key={index}>
-            <Badge
-              content=""
-              color={activeIndex === index ? "success" : "transparent"}
-              shape="circle"
-              size="lg"
-              placement="top-right"
-            >
-              <div
-                className={`relative rounded-full w-24 h-24 p-1 ${
-                  activeIndex === index ? "border-3 border-green-300" : " "
-                }`}
-                onClick={() => handleControlClick(index)}
+    <div className="flex flex-col justify-between h-full">
+      <div>
+        <Swiper
+          onSwiper={setSwiper}
+          pagination={false}
+          thumbs={{ swiper: swiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+        >
+          {slideData.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <Slide
+                backgroundImg={slide.backgroundImg}
+                name={slide.name}
+                description={slide.description}
+                color={slide.color}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      <div className="overflow-hidden">
+        <Swiper
+          onSwiper={setSwiper}
+          spaceBetween={40}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+        >
+          {[0, 1, 2, 3, 4].map((index) => (
+            <SwiperSlide key={index}>
+              <Badge
+                content=""
+                color={activeIndex === index ? "success" : "transparent"}
+                shape="circle"
+                size="lg"
+                placement="top-right"
               >
-                <img
-                  src={`/${index + 1}.webp`}
-                  alt=""
-                  className="w-full h-full rounded-full cursor-pointer"
-                />
-              </div>
-            </Badge>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      {/* </div> */}
-    </>
+                <div
+                  className={`relative rounded-full w-24 h-24 p-1 ${
+                    activeIndex === index ? "border-3 border-green-300" : " "
+                  }`}
+                  onClick={() => handleControlClick(index)}
+                >
+                  <img
+                    src={`/${index + 1}.webp`}
+                    alt=""
+                    className="w-full h-full rounded-full cursor-pointer"
+                  />
+                </div>
+              </Badge>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
   );
 }
