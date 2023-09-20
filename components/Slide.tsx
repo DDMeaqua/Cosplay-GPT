@@ -1,7 +1,15 @@
 import { useState } from "react";
 import Chat from "../components/Chat";
+import { text } from "stream/consumers";
 
-export default function Slide({ backgroundImg, name, description, color }) {
+export default function Slide({
+  backgroundImg,
+  name,
+  description,
+  color,
+  bgcolor,
+  btncolor,
+}) {
   const [showChat, setShowChat] = useState(false);
 
   const openChat = () => {
@@ -14,7 +22,7 @@ export default function Slide({ backgroundImg, name, description, color }) {
 
   return (
     <div
-      className={`text-${color}-600 relative flex flex-col m-auto h-full bg-cover bg-center rounded-3xl p-2`}
+      className={`${color} relative flex flex-col m-auto h-full bg-cover bg-center rounded-3xl p-2`}
     >
       <img src={backgroundImg} alt="" />
       <div className="absolute inset-0">
@@ -24,7 +32,7 @@ export default function Slide({ backgroundImg, name, description, color }) {
         {description.map((item, index) => (
           <div
             key={index}
-            className={`bg-${color}-100 my-1 inline-block p-1 rounded-full`}
+            className={`${bgcolor} my-1 inline-block p-1 rounded-full`}
           >
             # {item}
           </div>
@@ -38,7 +46,7 @@ export default function Slide({ backgroundImg, name, description, color }) {
         </div>
         <div
           onClick={openChat}
-          className={`bg-${color}-600 mr-3 text-xl px-5 leading-10 rounded-full text-black text-center font-normal whitespace-nowrap`}
+          className={`${btncolor} mr-3 text-xl px-5 leading-10 rounded-full text-white text-center font-normal whitespace-nowrap`}
         >
           チャット
         </div>

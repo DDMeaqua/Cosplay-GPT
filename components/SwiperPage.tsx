@@ -25,14 +25,18 @@ export default function SwiperPage() {
       backgroundImg: "/bg1.png",
       name: "メイ",
       description: ["お花のガーデニングが趣味", "優しい女の子", "料理愛好家"],
-      color: "green",
+      color: "text-green-600",
+      bgcolor: "bg-green-100",
+      btncolor: "bg-green-600",
     },
     {
       id: 1,
       backgroundImg: "/bg2.png",
       name: "猫フクロウロボット",
       description: ["未来世界探検家", "22世紀のロボット", "愛らしい"],
-      color: "orange",
+      color: "text-orange-600",
+      bgcolor: "bg-orange-100",
+      btncolor: "bg-orange-600",
     },
     {
       id: 2,
@@ -44,21 +48,27 @@ export default function SwiperPage() {
         "コンサルタント",
         "元AV女優",
       ],
-      color: "violet",
+      color: "text-violet-600",
+      bgcolor: "bg-violet-100",
+      btncolor: "bg-violet-600",
     },
     {
       id: 3,
       backgroundImg: "/bg4.png",
       name: "タゴール禅師",
       description: ["仏教禅宗後継者", "哲学者", "ライター"],
-      color: "amber",
+      color: "text-amber-600",
+      bgcolor: "bg-amber-100",
+      btncolor: "bg-amber-600",
     },
     {
       id: 4,
       backgroundImg: "/bg5.png",
       name: "マズロー",
       description: ["経験豊富な臨床医", "心理学者", "会話型"],
-      color: "blue",
+      color: "text-blue-600",
+      bgcolor: "bg-blue-100",
+      btncolor: "bg-blue-600",
     },
   ];
 
@@ -75,10 +85,13 @@ export default function SwiperPage() {
           {slideData.map((slide, index) => (
             <SwiperSlide key={index}>
               <Slide
+                key={slide.id}
                 backgroundImg={slide.backgroundImg}
                 name={slide.name}
                 description={slide.description}
                 color={slide.color}
+                bgcolor={slide.bgcolor}
+                btncolor={slide.btncolor}
               />
             </SwiperSlide>
           ))}
