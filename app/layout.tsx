@@ -17,8 +17,6 @@ export const metadata: Metadata = {
 	],
 	icons: {
 		icon: "/favicon.ico",
-		shortcut: "/favicon-16x16.png",
-		apple: "/apple-touch-icon.png",
 	},
 };
 
@@ -36,7 +34,7 @@ export default function RootLayout({
 					fontSans.variable
 				)}
 			>
-				<Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
+				<Providers>
 					{children}
 				</Providers>
 			</body>

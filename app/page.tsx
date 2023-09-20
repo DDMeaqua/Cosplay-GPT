@@ -18,7 +18,7 @@ export default function Home() {
             radius="full"
             size="lg"
             selectedKey={selected}
-            onSelectionChange={setSelected}
+            onSelectionChange={(key) => setSelected(key)}
           >
             {/* 在小屏幕上更改选项卡的样式 */}
             <Tab
