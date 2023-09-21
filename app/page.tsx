@@ -14,7 +14,9 @@ export default function Home() {
       <div className="max-w-lg mx-auto h-full flex flex-col">
         <div className="flex justify-between items-center mb-8 mt-4 px-2">
           <Tabs
+            className="bg-green-200 rounded-full"
             aria-label="Options"
+            variant="light"
             radius="full"
             size="lg"
             selectedKey={selected}
