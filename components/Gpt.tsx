@@ -27,17 +27,18 @@ export default function Gpt() {
   return (
     <div className="h-full">
       <div className="flex flex-col h-screen">
-        <div className="flex-1 p-4 overflow-y-auto">
+        <div className="flex-1 p-1 overflow-y-auto">
           {messages.map((message, index) => (
             <div
               key={index}
               className={`mb-4 ${index % 2 === 0 ? "text-right" : "text-left"}`}
             >
+              {index % 2 !== 0 ? <img className="inline-block rounded-full mr-2" src="/chatgpt.webp" alt="" /> : ""}
               <div
-                className={`inline-block px-4 py-2 rounded-lg ${
+                className={`inline-block px-4 py-2 ${
                   index % 2 === 0
-                    ? "bg-gray-300 text-gray-700"
-                    : "bg-blue-500 text-white"
+                    ? "bg-blue-400 text-white rounded-t-xl rounded-bl-xl"
+                    : "bg-gray-200 text-gray-700 rounded-r-xl rounded-tl-xl"
                 }`}
               >
                 {message.text}
@@ -53,7 +54,7 @@ export default function Gpt() {
               labelPlacement="outside"
               placeholder="请输入..."
               minRows="1"
-              radius="full"
+              radius="lg"
               value={newMessage}
               onChange={handleInputChange}
             />
