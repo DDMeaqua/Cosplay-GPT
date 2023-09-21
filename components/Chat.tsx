@@ -4,7 +4,7 @@ import Gpt from "../components/Gpt"
 export default function Chat({ onClose, name, avatar }) {
   return (
     <div className="fixed top-0 left-0 w-full h-screen flex flex-col bg-white">
-      <div className="bg-white p-2 flex items-center">
+      <div className="p-2 flex items-center">
         <button onClick={onClose} className="p-2 ml-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -37,8 +37,8 @@ export default function Gpt() {
               <div
                 className={`inline-block px-4 py-2 ${
                   index % 2 === 0
-                    ? "bg-blue-400 text-white rounded-t-xl rounded-bl-xl"
-                    : "bg-gray-200 text-gray-700 rounded-r-xl rounded-tl-xl"
+                    ? "bg-[#43d7b4] text-white rounded-t-xl rounded-bl-xl"
+                    : "bg-[#f4f6fa] text-gray-700 rounded-r-xl rounded-tl-xl"
                 }`}
               >
                 {message.text}

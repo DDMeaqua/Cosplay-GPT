@@ -117,7 +117,7 @@ export default function SwiperPage() {
               >
                 <div
                   className={`relative rounded-full p-1 ${
-                    activeIndex === index ? "border-3 border-green-300" : " "
+                    activeIndex === index ? "border-3 border-green-400" : " "
                   }`}
                   onClick={() => handleControlClick(index)}
                 >
