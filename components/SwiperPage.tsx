@@ -97,10 +97,10 @@ export default function SwiperPage() {
           ))}
         </Swiper>
       </div>
-      <div className="overflow-hidden">
+      <div>
         <Swiper
           onSwiper={setSwiper}
-          spaceBetween={24}
+          // spaceBetween={20}
           slidesPerView={4}
           freeMode={true}
           watchSlidesProgress={true}
@@ -116,7 +116,7 @@ export default function SwiperPage() {
                 placement="top-right"
               >
                 <div
-                  className={`relative rounded-full w-24 h-24 p-1 ${
+                  className={`relative rounded-full p-1 ${
                     activeIndex === index ? "border-3 border-green-300" : " "
                   }`}
                   onClick={() => handleControlClick(index)}
